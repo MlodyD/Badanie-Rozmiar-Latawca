@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Ankieta Kite</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    button { font-size: 1.2em; padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h1>Weź udział w ankiecie!</h1>
+  <p>Kliknij przycisk, aby wylosować wersję formularza.</p>
+  <button onclick="losuj()">Losuj formularz</button>
+
+  <script>
+    function losuj() {
+      const formularze = [
+        "https://forms.gle/FORMULARZ_A",
+        "https://forms.gle/FORMULARZ_B",
+        "https://forms.gle/FORMULARZ_C",
+        "https://forms.gle/FORMULARZ_D",
+        "https://forms.gle/FORMULARZ_E",
+        "https://forms.gle/FORMULARZ_F",
+        "https://forms.gle/FORMULARZ_G",
+        "https://forms.gle/FORMULARZ_H",
+        "https://forms.gle/FORMULARZ_I",
+        "https://forms.gle/FORMULARZ_J"
+      ];
+      const los = Math.floor(Math.random() * formularze.length);
+      window.location.href = formularze[los];
+    }
+  </script>
+</body>
+</html>
