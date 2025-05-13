@@ -16,17 +16,13 @@
 
   <script>
     function losuj() {
+      const arkusze = ["A", "B", "C", "D", "E"];
       const filmy = [
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        "https://www.youtube.com/watch?v=3GwjfUFyY6M",
-        "https://www.youtube.com/watch?v=DLzxrzFCyOs",
-        "https://www.youtube.com/watch?v=2Z4m4lnjxkY",
-        "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
-        "https://www.youtube.com/watch?v=9bZkp7q19f0",
-        "https://www.youtube.com/watch?v=fJ9rUzIMcZQ",
-        "https://www.youtube.com/watch?v=60ItHLz5WEA",
-        "https://www.youtube.com/watch?v=2vjPBrBU-TM",
-        "https://www.youtube.com/watch?v=oHg5SJYRHA0"
+        "https://docs.google.com/forms/d/e/1FAIpQLSdVVHvcR1-kkVGKqZCl0W-yL-hezIgwasRgblezDQbUxnDsag/viewform?usp=dialog", //A
+        "https://docs.google.com/forms/d/e/1FAIpQLSf7zgRiEj2TpxcMrBSDt-t1wdfZri4eXBw_tC0N1WquAyGvwQ/viewform?usp=dialog", //B
+        "https://docs.google.com/forms/d/e/1FAIpQLSd5Ko7TOX78ArMmD6vYxZH74eksvfuUgi7vKKi-pWccnmX_Xg/viewform?usp=dialog", //C
+        "https://docs.google.com/forms/d/e/1FAIpQLSdl393ppEytQj-zWaynbZw_6bxaGCkf51OXoKU2ge2VU_-PPA/viewform?usp=dialog", //D
+        "https://docs.google.com/forms/d/e/1FAIpQLSfFJhPfSrrXNl4folRXrkaNgqx-sz-NfEV_L2u87HPW4uLE1A/viewform?usp=dialog", //E
       ];
 
       const los = Math.floor(Math.random() * filmy.length);
@@ -35,7 +31,7 @@
       const container = document.getElementById("link-container");
       container.innerHTML = `
         <a href="${link}" target="_blank">
-          <button>Obejrzyj film</button>
+          <button>Kliknij, żeby wypełnić arkusz ${arkusze[los]}</button>
         </a>
       `;
     }
