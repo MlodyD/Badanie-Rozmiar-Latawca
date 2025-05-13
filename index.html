@@ -26,26 +26,48 @@
   </div>
 
   <script>
-    function losuj() {
-      const arkusze = ["A", "B", "C", "D", "E"];
-      const filmy = [
-        "https://docs.google.com/forms/d/e/1FAIpQLSdVVHvcR1-kkVGKqZCl0W-yL-hezIgwasRgblezDQbUxnDsag/viewform?usp=dialog", //A
-        "https://docs.google.com/forms/d/e/1FAIpQLSf7zgRiEj2TpxcMrBSDt-t1wdfZri4eXBw_tC0N1WquAyGvwQ/viewform?usp=dialog", //B
-        "https://docs.google.com/forms/d/e/1FAIpQLSd5Ko7TOX78ArMmD6vYxZH74eksvfuUgi7vKKi-pWccnmX_Xg/viewform?usp=dialog", //C
-        "https://docs.google.com/forms/d/e/1FAIpQLSdl393ppEytQj-zWaynbZw_6bxaGCkf51OXoKU2ge2VU_-PPA/viewform?usp=dialog", //D
-        "https://docs.google.com/forms/d/e/1FAIpQLSfFJhPfSrrXNl4folRXrkaNgqx-sz-NfEV_L2u87HPW4uLE1A/viewform?usp=dialog", //E
-      ];
+  const arkusze = ["A", "B", "C", "D", "E"];
+  const linki = [
+    "https://docs.google.com/forms/d/e/1FAIpQLSdVVHvcR1-kkVGKqZCl0W-yL-hezIgwasRgblezDQbUxnDsag/viewform?usp=dialog", //A
+    "https://docs.google.com/forms/d/e/1FAIpQLSf7zgRiEj2TpxcMrBSDt-t1wdfZri4eXBw_tC0N1WquAyGvwQ/viewform?usp=dialog", //B
+    "https://docs.google.com/forms/d/e/1FAIpQLSd5Ko7TOX78ArMmD6vYxZH74eksvfuUgi7vKKi-pWccnmX_Xg/viewform?usp=dialog", //C
+    "https://docs.google.com/forms/d/e/1FAIpQLSdl393ppEytQj-zWaynbZw_6bxaGCkf51OXoKU2ge2VU_-PPA/viewform?usp=dialog", //D
+    "https://docs.google.com/forms/d/e/1FAIpQLSfFJhPfSrrXNl4folRXrkaNgqx-sz-NfEV_L2u87HPW4uLE1A/viewform?usp=dialog", //E
+  ];
 
-      const los = Math.floor(Math.random() * filmy.length);
-      const link = filmy[los];
+  function losuj() {
+    let wykorzystane = JSON.parse(localStorage.getItem("wykorzystaneFormularze") || "[]");
 
-      const container = document.getElementById("link-container");
+    // Filtrujemy dostępne indeksy
+    const dostepneIndeksy = linki
+      .map((_, index) => index)
+      .filter(index => !wykorzystane.includes(index));
+
+    const container = document.getElementById("link-container");
+
+    if (dostepneIndeksy.length === 0) {
       container.innerHTML = `
-        <a href="${link}" target="_blank">
-          <button>Kliknij, żeby wypełnić arkusz ${arkusze[los]}</button>
-        </a>
+        <p>🎉 Dziękuję! Wypełniłeś już wszystkie formularze!</p>
+        <button disabled>Wszystkie arkusze zostały już użyte</button>
       `;
+      return;
     }
-  </script>
+
+    // Losujemy jeden z dostępnych indeksów
+    const losowyIndex = dostepneIndeksy[Math.floor(Math.random() * dostepneIndeksy.length)];
+
+    // Dodajemy do listy wykorzystanych
+    wykorzystane.push(losowyIndex);
+    localStorage.setItem("wykorzystaneFormularze", JSON.stringify(wykorzystane));
+
+    // Pokazujemy przycisk
+    const link = linki[losowyIndex];
+    container.innerHTML = `
+      <a href="${link}" target="_blank">
+        <button>Kliknij, żeby wypełnić arkusz ${arkusze[losowyIndex]}</button>
+      </a>
+    `;
+  }
+</script>
 </body>
 </html>
