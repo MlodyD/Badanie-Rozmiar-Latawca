@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Ankieta Kite</title>
-  <style>
-    body { font-family: sans-serif; text-align: center; padding: 50px; }
-    button { font-size: 1.2em; padding: 10px 20px; }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h1>Weź udział w ankiecie!</h1>
-  <p>Kliknij przycisk, aby wylosować wersję formularza.</p>
-  <button onclick="losuj()">Losuj formularz</button>
+  <div class="container">
+    <h1>Weź udział w ankiecie!</h1>
+    <p>Kliknij przycisk, aby wylosować wersję formularza.</p>
+    <button onclick="losuj()">Losuj formularz</button>
+  </div>
 
   <script>
     function losuj() {
       const formularze = [
-        "https://forms.gle/FORMULARZ_A",
-        "https://forms.gle/FORMULARZ_B",
-        "https://forms.gle/FORMULARZ_C",
-        "https://forms.gle/FORMULARZ_D",
-        "https://forms.gle/FORMULARZ_E",
-        "https://forms.gle/FORMULARZ_F",
-        "https://forms.gle/FORMULARZ_G",
-        "https://forms.gle/FORMULARZ_H",
-        "https://forms.gle/FORMULARZ_I",
-        "https://forms.gle/FORMULARZ_J"
+        "https.youtube.com",
+        "https.youtube.com",
+        "https.youtube.com",
+        "https.youtube.com",
+        "https.youtube.com",
+        "https.youtube.com",
+        "https.youtube.com",
+        "https.youtube.com",
+        "https.youtube.com",
+        "https.youtube.com",
       ];
       const los = Math.floor(Math.random() * formularze.length);
       window.location.href = formularze[los];
