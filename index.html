@@ -2,33 +2,42 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Ankieta Kite</title>
+  <title>Losowy filmik YouTube</title>
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <div class="container">
-    <h1>Weź udział w ankiecie!</h1>
-    <p>Kliknij przycisk, aby wylosować wersję formularza.</p>
-    <button onclick="losuj()">Losuj formularz</button>
+    <h1>Wylosuj filmik na YouTube</h1>
+    <p>Kliknij przycisk, aby losowo wybrać jeden z 10 filmików.</p>
+    <button onclick="losuj()">Losuj filmik</button>
+    <div id="link-container"></div>
   </div>
 
   <script>
     function losuj() {
-      const formularze = [
-        "https:youtube.com",
-        "https:youtube.com",
-        "https:youtube.com",
-        "https:youtube.com",
-        "https.youtube.com",
-        "https:youtube.com",
-        "https:youtube.com",
-        "https:youtube.com",
-        "https:youtube.com",
-        "https:youtube.com",
+      const filmy = [
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "https://www.youtube.com/watch?v=3GwjfUFyY6M",
+        "https://www.youtube.com/watch?v=DLzxrzFCyOs",
+        "https://www.youtube.com/watch?v=2Z4m4lnjxkY",
+        "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+        "https://www.youtube.com/watch?v=9bZkp7q19f0",
+        "https://www.youtube.com/watch?v=fJ9rUzIMcZQ",
+        "https://www.youtube.com/watch?v=60ItHLz5WEA",
+        "https://www.youtube.com/watch?v=2vjPBrBU-TM",
+        "https://www.youtube.com/watch?v=oHg5SJYRHA0"
       ];
-      const los = Math.floor(Math.random() * formularze.length);
-      window.location.href = formularze[los];
+
+      const los = Math.floor(Math.random() * filmy.length);
+      const link = filmy[los];
+
+      const container = document.getElementById("link-container");
+      container.innerHTML = `
+        <a href="${link}" target="_blank">
+          <button>Obejrzyj film</button>
+        </a>
+      `;
     }
   </script>
 </body>
