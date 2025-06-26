@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator rozmiaru latawca</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.8em;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1em;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    button {
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      border: none;
+      color: white;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      width: 100%;
+    }
+
+    button:hover {
+      transform: scale(1.02);
+    }
+
+    #wynik {
+      margin-top: 25px;
+      padding: 15px;
+      background: rgba(0, 198, 255, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid #00c6ff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kalkulator rozmiaru latawca</h1>
+    
+    <div class="form-group">
+      <label for="waga">Waga (kg):</label>
+      <input type="number" id="waga" placeholder="np. 75">
+    </div>
+    
+    <div class="form-group">
+      <label for="wiatr">Prędkość wiatru (węzły):</label>
+      <input type="number" id="wiatr" placeholder="np. 18">
+    </div>
+    
+    <div class="button-group">
+      <button onclick="obliczStandardowo()">Oblicz standardowym wzorem</button>
+      <button onclick="obliczRegresja()">Oblicz wzorem regresji</button>
+    </div>
+    
+    <div id="wynik"></div>
+  </div>
+
+  <script>
+    function obliczStandardowo() {
+      const waga = parseFloat(document.getElementById('waga').value);
+      const wiatr = parseFloat(document.getElementById('wiatr').value);
+      if (isNaN(waga) || isNaN(wiatr)) {
+        document.getElementById('wynik').textContent = 'Podaj poprawne wartości.';
+        return;
+      }
+      const rozmiar = (waga / wiatr) * 2.2;
+      document.getElementById('wynik').textContent = `Standardowy rozmiar latawca: ${rozmiar.toFixed(2)} m²`;
+    }
+
+    function obliczRegresja() {
+      const waga = parseFloat(document.getElementById('waga').value);
+      const wiatr = parseFloat(document.getElementById('wiatr').value);
+      if (isNaN(waga) || isNaN(wiatr)) {
+        document.getElementById('wynik').textContent = 'Podaj poprawne wartości.';
+        return;
+      }
+      const rozmiar = 10.28 - 0.38*wiatr*wiatr/waga + 10.05*waga/wiatr/wiatr;
+      document.getElementById('wynik').textContent = `Rozmiar z regresji: ${rozmiar.toFixed(2)} m²`;
+    }
+  </script>
+</body>
+</html>
