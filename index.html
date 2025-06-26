@@ -48,61 +48,11 @@
 <body>
   <div class="container">
     <h1>Badanie zależności rozmiaru latawca od prędkości wiatru i masy ridera</h1>
+    <p>Odnośniki do kalkulatora, który jest wynikiem badań oraz do sprawozdania, w którym opisuję użyte metody
+    </p>
     <button onclick="window.location.href='dobor_latawca.html'">Przejdź do kalkulatora latawca</button>
-    <button onclick="losuj()">Losuj Formularz</button>
+    <button onclick="window.location.href='Sprawozdanie.pdf'">Sprawozdanie, teoria i wyniki</button>
     <div id="link-container"></div>
-    <p>
-      Cześć! Nazywam się Maciej, jestem studentem informatyki i od wielu lat uczę kitesurfingu na Półwyspie Helskim. 
-      Nawet jako doświadczony instruktor często zastanawiam się, jaki rozmiar latawca będzie najlepszy dla kursanta przy danych warunkach wiatrowych.
-    </p>
-    <p>
-      To właśnie zainspirowało mnie do stworzenia algorytmu wspomagającego dobór rozmiaru latawca – jako projektu na przedmiot związany ze sztuczną inteligencją.
-      Aby taki algorytm mógł działać skutecznie, potrzebuję możliwie jak najwięcej danych – dlatego bardzo dziękuję Ci za wypełnienie formularza!
-    </p>
-    <h2>
-      Jeśli chcesz pomóc jeszcze bardziej, możesz wylosować formularz kilka razy i wypełnić go ponownie.  
-      Każda odpowiedź ma znaczenie – z góry ogromnie dziękuję! 🙏
-    </h2>
-   <p>Jeśli interesują cię wyniki mojego badania, to po zakończeniu prac na tej stronie opublikuję link do strony, na której będzie działał ten algorytm. Do zobaczenia na wodzie :))</p>
-  </div>
-
-  <script>
-  const arkusze = ["A", "B", "C", "D", "E"];
-  const filmy = [
-    "https://docs.google.com/forms/d/e/1FAIpQLSdVVHvcR1-kkVGKqZCl0W-yL-hezIgwasRgblezDQbUxnDsag/viewform?usp=dialog", // A
-    "https://docs.google.com/forms/d/e/1FAIpQLSf7zgRiEj2TpxcMrBSDt-t1wdfZri4eXBw_tC0N1WquAyGvwQ/viewform?usp=dialog", // B
-    "https://docs.google.com/forms/d/e/1FAIpQLSd5Ko7TOX78ArMmD6vYxZH74eksvfuUgi7vKKi-pWccnmX_Xg/viewform?usp=dialog", // C
-    "https://docs.google.com/forms/d/e/1FAIpQLSdl393ppEytQj-zWaynbZw_6bxaGCkf51OXoKU2ge2VU_-PPA/viewform?usp=dialog", // D
-    "https://docs.google.com/forms/d/e/1FAIpQLSfFJhPfSrrXNl4folRXrkaNgqx-sz-NfEV_L2u87HPW4uLE1A/viewform?usp=dialog", // E
-  ];
-
-  let wykorzystane = [];
-
-  function losuj() {
-    const dostepneIndeksy = filmy
-      .map((_, index) => index)
-      .filter(index => !wykorzystane.includes(index));
-
-    const container = document.getElementById("link-container");
-
-    if (dostepneIndeksy.length === 0) {
-      container.innerHTML = `
-        <p>🎉 Dziękuję! Wypełniłeś/aś już wszystkie formularze! </p>
-        <button disabled>Wszystkie arkusze zostały użyte</button>
-      `;
-      return;
-    }
-
-    const losowyIndex = dostepneIndeksy[Math.floor(Math.random() * dostepneIndeksy.length)];
-    wykorzystane.push(losowyIndex);
-
-    const link = filmy[losowyIndex];
-    container.innerHTML = `
-      <a href="${link}" target="_blank">
-        <button>Kliknij, żeby wypełnić arkusz ${arkusze[losowyIndex]}</button>
-      </a>
-    `;
-  }
-  </script>
+    
 </body>
 </html>
