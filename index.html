@@ -5,11 +5,50 @@
   <title>Badanie Kitesurfing</title>
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 0;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    #link-container a button {
+      background-color: #008CBA;
+    }
+    
+    #link-container a button:hover {
+      background-color: #0077a3;
+    }
+    
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>Badanie zależności rozmiaru latawca od prędkości wiatru i masy ridera</h1>
-    <a href = "dobor_latawca.html" >Link do strony z kalkulatorem latawca</a>
+    <button onclick="window.location.href='dobor_latawca.html'">Przejdź do kalkulatora latawca</button>
     <button onclick="losuj()">Losuj Formularz</button>
     <div id="link-container"></div>
     <p>
@@ -37,7 +76,6 @@
     "https://docs.google.com/forms/d/e/1FAIpQLSfFJhPfSrrXNl4folRXrkaNgqx-sz-NfEV_L2u87HPW4uLE1A/viewform?usp=dialog", // E
   ];
 
-  // Przechowujemy wykorzystane arkusze tylko w trakcie jednej sesji (odświeżenie = reset)
   let wykorzystane = [];
 
   function losuj() {
@@ -65,7 +103,6 @@
       </a>
     `;
   }
-</script>
-        
+  </script>
 </body>
 </html>
